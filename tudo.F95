@@ -58,24 +58,18 @@ PROGRAM tudo
         
         V_B(I) = V_A(I) * FTR(I)
         
-!        MG_AB(I) = (O(I) * V_B(I) - L(I) * V_A) / (Q(I) * AB)
         MG_AB(I) = (M(I) * V_A(I) - N(I) * V_B(I)) / (P(I) * AB)
 
         MG_BC(I) = -V_B(I) / BC
 
-!        BTRM1(I) = OA * MG(I)**2 * L(I) * (O(I) +  N(I))
         BTRM1(I) = OA * MG(I)**2 * L(I) * (O(I) -  N(I))
         
-!        BTRM2(I) = BC * MG_BC(I)**2 * ( O(I)**2 + N(I)**2)
         BTRM2(I) = BC * MG_BC(I)**2 * ( O(I)**2 - N(I)**2)
         
-!        BTRM3(I) = AB * MG_AB(I)**2 * ( O(I) * Q(I) - N(I) * P(I))
         BTRM3(I) = AB * MG_AB(I)**2 * ( O(I) * Q(I) + N(I) * P(I))
         
-!        DNAB(I) = AB * (O(I) * P(I) + N(I) * Q(I))
         DNAB(I) = AB * (-O(I) * P(I) + N(I) * Q(I))
         
-!        MG_AB_PNT(I) = -(BTRM1(I) + BTRM2(I) + BTRM3(I)) / DNAB(I)
         MG_AB_PNT(I) =  (BTRM1(I) + BTRM2(I) + BTRM3(I)) / DNAB(I)
 
         BCTRM1(I) = OA * MG(I)**2 * L(I) * (P(I) - Q(I))
@@ -106,15 +100,11 @@ PROGRAM tudo
    END DO
    
    PRINT *
-   
-!   GO TO 10
 
    CASE (2)
 
    OA = 0.3000000000000
    BC = 0.3000000000000
-!   OC = 1.3000000000000
-!   AB = SQRT((OC - BC)**2 + OA**2)
    AB = 1.0440307
    OC = SQRT(AB**2 - (OA+BC)**2)
 
@@ -187,15 +177,12 @@ PROGRAM tudo
    PRINT *
    
    DO I = 0, T-1
-!     PRINT *, LF(I) * 180.0 / PI, BT(I) * 180.0 / PI, GM(I) * 180.0 / PI
       PRINT "(f5.1, f15.3, f15.3)", LF(I) * 180.0 / PI, MG_AB(I), MG_AB_PNT(I) !V_A(I) 
    END DO
    PRINT *
    WRITE(*,*)"NESTE CASO, A BARRA DE CONEXÃO FICA HORIZONTAL PARA ALFA = 90 GRAUS E BETA = 0,"
    WRITE(*,*)"ENTÃO O PROGRAMA É TERMINADO UM PASSO ANGULAR ANTES PARA EVITAR DIVISÃO POR ZERO"
    PRINT *
-   
-!   GO TO 10
    
    CASE (3) 
 
@@ -268,8 +255,6 @@ PROGRAM tudo
    END DO
    
    PRINT *
-   
-!   GO TO 10
    
    CASE (4)
       WRITE(*,*)
