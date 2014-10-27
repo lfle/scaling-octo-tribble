@@ -24,7 +24,7 @@ READ(*,*) J
 SELECT CASE (J)
 CASE (1)
 
-OPEN (unit = 10, file = "mecanismo1.dat", status = "old",  &
+OPEN (unit = 10, file = "mecanismo1.dat", status = "new",  &
          action = "write", form = "formatted", position = "rewind")
 
 OA = 0.3000000000000
@@ -96,7 +96,7 @@ PRINT *
 
 CASE (2)
 
-OPEN (unit = 10, file = "mecanismo2.dat", status = "old",  &
+OPEN (unit = 10, file = "mecanismo2.dat", status = "new",  &
          action = "write", form = "formatted", position = "rewind")
 
 OA = 0.3000000000000
@@ -165,7 +165,7 @@ WRITE(*,*)"ENTÃO O PROGRAMA É TERMINADO UM PASSO ANGULAR ANTES PARA EVITAR DIV
 PRINT *
 CASE (3)
 
-OPEN (unit = 10, file = "mecanismo3.dat", status = "old",  &
+OPEN (unit = 10, file = "mecanismo3.dat", status = "new",  &
          action = "write", form = "formatted", position = "rewind")
 
 OA = 0.3000000000000
